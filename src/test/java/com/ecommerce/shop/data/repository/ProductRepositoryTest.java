@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -31,7 +32,7 @@ class ProductRepositoryTest {
         product.setName("Luxury Sofa");
         product.setPrice(400D);
         product.setCurrency(Currency.NGN);
-        product.setDetails("the sofa in town newel uefi erbium wife beef kau useful oafish again he a idea h8f.");
+        product.setDetails("the sofa in town newel");
         assertThat(product).isNotNull();
         assertThat(product.getId()).isNull();
         log.info("Product before saving --> {}",product);
@@ -41,9 +42,10 @@ class ProductRepositoryTest {
     }
     @Test
     @DisplayName("when find all product is called then product list is returned")
+    @Transactional
     public void productListIsReturned(){
         List<Product>products = productRepositoryImpl.findAll();
-        assertThat(products).hasSize(5);
+        assertThat(products).hasSize(4);
         log.info("Products returned from database --> {}", products);
     }
 }
