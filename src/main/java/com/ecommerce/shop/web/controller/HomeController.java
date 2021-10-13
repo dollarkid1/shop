@@ -7,9 +7,34 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HomeController {
 
-    @GetMapping("/say-hello")
-    public @ResponseBody
-    String getWelcomeMessage(){
-        return "Welcome to my first spring application";
+    @GetMapping("/index")
+    public String getIndex(){
+        return "index";
+    }
+
+
+    @GetMapping("/about")
+    public String getAbout(){
+        return "about";
+    }
+
+    @GetMapping("/services")
+    public String getServices(){
+        return "services";
+    }
+
+    @GetMapping("/products")
+    public String getProduct(){
+        return "product";
+    }
+
+    @GetMapping("/single")
+    public String getSingle(){
+        return "single";
+    }
+
+    @GetMapping("/contact")
+    public String getContact(){
+        return "contact";
     }
 }
